@@ -1,8 +1,6 @@
 import argparse
-from genericpath import exists
 from pathlib import Path
 import os
-from secrets import choice
 import shutil
 import open3d
 import numpy as np
@@ -49,8 +47,7 @@ def create_obj_files(args, num=1):
         write_pcd_to_obj(dir / f"{j + 1}_1.obj", orig)
         write_pcd_to_obj(dir / f"{j + 1}_2.obj", target)
             
-        
-
+    
 def parse_args():
     """
     config the parameter
