@@ -1,0 +1,6 @@
+[submodule "SpareNet"]
+	path = SpareNet
+	url = https://github.com/DanHalp/SpareNet.git
+[submodule "DCP"]
+	path = DCP
+	url = https://github.com/DanHalp/DCP.git
