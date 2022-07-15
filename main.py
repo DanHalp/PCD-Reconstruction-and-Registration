@@ -20,12 +20,14 @@ def create_model():
     m.test()
     
     # Perfom DCP on predicted:
-    path = Path(args.outputs) / args.model / "point_clouds"
-    samples_list = os.listdir(path)
-    bound = args.sample_limit if args.sample_limit != -1 else len(samples_list)
-    for i in range(bound):
-        path = path / samples_list[i]
-        pcds = os.listdir(path)
+    # path = Path(args.TRNSFORM.output) / args.model / "point_clouds"
+    # samples_list = os.listdir(path)
+    # bound = args.sample_limit if args.sample_limit != -1 else len(samples_list)
+    # for i in range(bound):
+    #     path = path / samples_list[i]
+    #     pcds = os.listdir(path)
+
+    
     
     
     
