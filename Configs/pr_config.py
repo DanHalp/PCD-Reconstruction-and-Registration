@@ -1,5 +1,7 @@
+import os
+import shutil
 from easydict import EasyDict as edict
-from enum import Enum
+from enum import Enum, IntEnum
 import numpy as np
 
 
@@ -10,6 +12,39 @@ class DATASETS(Enum):
     SHAPENET = 0
     MODELNET = 1
 
+class PC_TYPES(IntEnum):
+    GT_CLOUD = 0
+    PARTIAL_CLOUD = 1
+    RECONSTRUCTED_CLOUD = 2
+
+PC_TYPES_LIST = ["gtcloud", "partial_cloud", "reconstructed"]
+
+###################### Helper classes ######################
+
+class IOStream:
+    def __init__(self, path):
+        self.f = open(path, 'a')
+
+    def cprint(self, text):
+        print(text)
+        self.f.write(text + '\n')
+        self.f.flush()
+        
+    def write_file(self, text):
+        self.f.write(text + '\n')
+        self.f.flush()
+
+    def close(self):
+        self.f.close()
+        
+###################### Helper functions ######################
+def make_dir(path):
+
+    if os.path.exists(path):
+        shutil.rmtree(path)
+    os.makedirs(path, exist_ok=True)
+
+    
 ###################### SpareNet ######################
 CFG.RECONSTRUCTION = edict()
 CFG.RECONSTRUCTION.model_path = "/home/danha/PCD-Reconstruction-and-Registration/data/Checkpoints/SpareNet/SpareNet.pth"
@@ -22,7 +57,7 @@ CFG.RECONSTRUCTION.random_samples = [False, True][0]
 CFG.RECONSTRUCTION.save = [False, True][0]
 CFG.RECONSTRUCTION.output = "/home/danha/PCD-Reconstruction-and-Registration/Outputs/"
 CFG.RECONSTRUCTION.local_dir = "/home/danha/PCD-Reconstruction-and-Registration/SpareNet"
-CFG.RECONSTRUCTION.active = [True, False][0]
+CFG.RECONSTRUCTION.active = [True, False][1]
 
 
 
@@ -57,7 +92,8 @@ CFG.TRANSFORM.gaussian_noise = [True, False][1]
 CFG.TRANSFORM.unseen = [True, False][1]
 CFG.TRANSFORM.num_points = [512, 1024, 2048, 3072, 4096, 16384][1]
 CFG.TRANSFORM.factor = 4
-CFG.TRANSFORM.pc_type = ["gtcloud", "partial_cloud"][1]   # Relevant only to ShapeNet
+CFG.TRANSFORM.pc_type = PC_TYPES_LIST[PC_TYPES.GT_CLOUD]   # Relevant only to ShapeNet
 CFG.TRANSFORM.dataset = [DATASETS.SHAPENET, DATASETS.MODELNET][0]
 CFG.TRANSFORM.dataset_name = "ShapeNet" if  CFG.TRANSFORM.dataset == DATASETS.SHAPENET else "ModelNet"
 CFG.TRANSFORM.fixed_dataset_indices = [np.array([295, 944,  869,  465,  997,  906,  735, 1068,  725, 1138,  573,  374,  482,  912, 737, 1175,  210,  351,  705, 11]), None][0]
+
