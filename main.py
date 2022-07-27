@@ -12,42 +12,29 @@ from SpareNet.configs.base_config import cfg as sparenet_cfg
 from DCP.main import main_func as dcp_main
 
 
-
-
-
 def create_model():
 
-    
+    ################################# General Update #################################
     if "PROJECT" not in CFG:
         CFG.PROJECT = edict()
     CFG.update(sparenet_cfg)
-    
-    
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     CFG.PROJECT.device = device
     CFG.TRAIN.batch_size = CFG.TRANSFORM.batch_size
     
     ################################# Training #################################
-    # model = DCP_MODEL(args=CFG, partiton="train")
-
-    # model.train()
-    # dcp_main(CFG)
+    if CFG.PROJECT.task == TASK.TRAIN:
+        model = DCP_MODEL(args=CFG, partiton=TASK.TRAIN)
+        model.train()
     
     ################################# Testing + Metrics saving #################################
-    
-    
-    
-    model = DCP_MODEL(args=CFG)
-    
-    torch.cuda.empty_cache()
-    with torch.no_grad():
-        model.compare_all()
+    elif CFG.PROJECT.task == TASK.TEST:
+        model = DCP_MODEL(args=CFG)
+        torch.cuda.empty_cache()
+        with torch.no_grad():
+            # print(model.test_and_print(CFG.TRANSFORM.pc_type));exit()
+            model.compare_all()
 
-   
-
-    
-    
-    
 if __name__ == "__main__":
     
     # Set GPU to use
