@@ -64,9 +64,9 @@ class IOStream:
         self.f.close()
         
 ###################### Helper functions ######################
-def make_dir(path):
+def make_dir(path, delete=False):
 
-    if os.path.exists(path):
+    if delete and os.path.exists(path):
         shutil.rmtree(path)
     os.makedirs(path, exist_ok=True)
 
@@ -112,7 +112,7 @@ CFG.TRANSFORM.n_blocks = 1
 CFG.TRANSFORM.n_heads = 4
 CFG.TRANSFORM.ff_dims = 1024
 CFG.TRANSFORM.dropout = 0.1
-CFG.TRANSFORM.test_batch_size = 6
+CFG.TRANSFORM.test_batch_size = 20
 CFG.TRANSFORM.iterations = 1
 CFG.TRANSFORM.use_sgd = [False, True][0]
 CFG.TRANSFORM.momentum = 0.9
