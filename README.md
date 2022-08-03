@@ -44,7 +44,7 @@ PCD Reconstruction and Registration for the ML3D course at TUM (2022)
     │   └── pr_config.py         # Configuration file with model parameters
     ├── DCP                      # Folder for the DCP model
     ├── docs                     # Folder with the final paper and other resources
-    ├── docs                     # Folder with the trained models
+    ├── model                    # Folder with the trained models
     ├── SpareNet                 # Folder for the SpareNet model
     └── README.md
 
