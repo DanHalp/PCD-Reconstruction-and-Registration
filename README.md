@@ -6,7 +6,7 @@ PCD Reconstruction and Registration for the ML3D course at TUM (2022)
 </div>
 
 ### [Report](.docs/report.pdf)
-[Dan Halperin](https://github.com/DanHalp), [Manuel Coutinho](https://github.com/ManelCoutinho)
+[Dan Halperin](https://github.com/DanHalp), [Manuel Coutinho](https://github.com/ManelCoutinho), Andrii Protas, Priya Arumugam
 
 ## Abstract
 
