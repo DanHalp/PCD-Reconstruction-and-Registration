@@ -68,7 +68,7 @@ To run the model simply configure the `pr_config.py` file (see folder structure)
 
 You can select the model from the `model` folder.
 
-# Example running configurations:
+### Example running configurations:
 ```
 CFG.PROJECT.task = TASK.TEST
 CFG.TRANSFORM.use_icp = FALSE
