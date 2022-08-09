@@ -68,6 +68,17 @@ To run the model simply configure the `pr_config.py` file (see folder structure)
 
 You can select the model from the `model` folder.
 
+# Example running configurations:
+CFG.PROJECT.task = TASK.TEST
+CFG.TRANSFORM.use_icp = FALSE
+CFG.RECONSTRUCTION.output = "<outputdir>"
+CFG.RECONSTRUCTION.local_dir = "<SpareNetMainDir>"
+CFG.RECONSTRUCTION.model_path = "<SpareNetModelPath>"
+CFG.TRANSFORM.model_path = MODELS_ORIG_OR_TRAIN[0]
+
+Set your DCP modelpath in MODELS_ORIG_OR_TRAIN. Just follow the structure.
+
+
 ## Output folder structure
     Outputs
     ├── Orig                  # Folder with outputs for the original DCP
